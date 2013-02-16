@@ -1,0 +1,6 @@
+maintainer        "Nestor G. Pestelos, Jr."
+maintainer_email  "ngpestelos@gmail.com"
+description       "Configures rails applications"
+version           "0.1"
+depends           "nginx"
+depends           "unicorn"

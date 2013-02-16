@@ -7,5 +7,4 @@ end
 
 template "/etc/nginx/nginx.conf" do
   notifies :reload, "service[nginx]"
-  variables :user => "www-data"
 end
