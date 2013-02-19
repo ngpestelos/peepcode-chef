@@ -1,7 +1,12 @@
 include_recipe "nginx"
 include_recipe "unicorn"
 
+package "libsqlite3-dev"
+
 gem_package "bundler"
+#gem_package "bundler" do
+#  version "1.2.4"
+#end
 
 common = {:name => "kayak", :app_root => "/u/apps/kayak"}
 
@@ -10,12 +15,13 @@ directory common[:app_root] do
   recursive true
 end
 
-directory common[:app_root]+"/current" do
+directory common[:app_root]+"/shared" do
   owner "vagrant"
 end
 
 %w(config log tmp sockets pids).each do |dir|
   directory "#{common[:app_root]}/shared/#{dir}" do
+    owner "vagrant"
     recursive true
     mode 0755
   end
